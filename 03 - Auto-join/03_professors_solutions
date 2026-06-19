@@ -1,0 +1,59 @@
+-- Correction des exercices du TP3
+-- EPFC-ULB
+
+
+-- Q1
+SELECT DISTINCT PName
+FROM P
+WHERE PName LIKE '%C%';
+
+-- Q2
+SELECT DISTINCT PName
+FROM P
+WHERE weight * 454 <= 6000;
+
+-- Q3
+SELECT DISTINCT JName
+FROM J
+WHERE JName LIKE '%I%';
+
+-- Q4
+SELECT DISTINCT SName
+FROM S
+WHERE SName LIKE  'a%' OR SName LIKE  'c%';
+
+--Q5 : 2 réponses
+SELECT DISTINCT S.SNAME  FROM SPJ, S
+WHERE  SPJ.ID_S = S.ID_S
+	AND Year(date_derniere_livraison) BETWEEN 2015 AND 2019
+
+-- Q6 : 194 réponses
+SELECT id_s, id_p, id_j
+FROM S,P,J
+WHERE s.city <> p.city
+   OR p.city <> j.city;
+
+-- ou
+SELECT id_s, id_p, id_j
+FROM S,P,J
+WHERE NOT(s.city = p.city AND p.city = j.city);
+
+-- Q7 : 17 réponses
+SELECT DISTINCT spj1.id_p, spj2.id_p, spj1.id_s
+FROM SPJ spj1, SPJ spj2
+WHERE spj1.id_s = spj2.id_s
+  AND spj1.id_p > spj2.id_p;
+
+-- Q8 : 79 réponses
+SELECT id_s, S.city, id_p, p.city, id_j, j.city
+FROM S,P,J
+WHERE s.city <> p.city
+  AND s.city <> j.city
+  AND p.city <> j.city;
+
+-- Q9 : 4 réponses
+SELECT DISTINCT commande1.ID_S
+FROM SPJ commande1, SPJ commande2
+WHERE commande1.ID_S =  commande2.ID_S
+  AND commande1.ID_P =  commande2.ID_P
+  AND commande1.ID_J <> commande2.ID_J;
