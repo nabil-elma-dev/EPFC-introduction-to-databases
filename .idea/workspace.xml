@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="" />
+    <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/04 - Recap 1 to 3/04 - Exercices instructions/bdd_tp04.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/04 - Recap 1 to 3/04 _professors_solutions" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/04 - Recap 1 to 3/04_recap_1_to_3.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +33,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/BD01/02 - Join/02 - Exercices instructions",
+    "last_opened_file_path": "C:/BD01/04 - Recap 1 to 3/04 - Exercices instructions",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -39,13 +44,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\BD01\04 - Recap 1 to 3\04 - Exercices instructions" />
+      <recent name="C:\BD01\03 - Auto-join\03 - Exercices instructions" />
+      <recent name="C:\BD01\SQL Scripts" />
       <recent name="C:\BD01\02 - Join\02 - Exercices instructions" />
       <recent name="C:\BD01\02 - Join\02 - Lecture slides" />
-      <recent name="C:\BD01\02 - Join" />
-      <recent name="C:\BD01\SQL Scripts" />
-      <recent name="C:\BD01\01 - basic queries\01 - Exercices instructions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\BD01\03 - Auto-join\03 - Lecture slides" />
+      <recent name="C:\BD01\03 - Auto-join" />
       <recent name="C:\BD01\01 - basic queries" />
     </key>
   </component>
@@ -67,6 +74,9 @@
       <updated>1781823085819</updated>
       <workItem from="1781823087706" duration="110000" />
       <workItem from="1781829538586" duration="4458000" />
+      <workItem from="1781901055059" duration="2837000" />
+      <workItem from="1781969918052" duration="367000" />
+      <workItem from="1781987993226" duration="776000" />
     </task>
     <servers />
   </component>
