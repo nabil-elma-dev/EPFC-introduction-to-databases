@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/06- Aggregate functions/06 - Exercices instructions/06_Instructions_french.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06- Aggregate functions/06_aggregate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/06- Aggregate functions/06_aggregate.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +34,14 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/nabil/IdeaProjects/EPFC-introduction-to-databases/06- Aggregate functions/06 - Exercices instructions",
+    "last_opened_file_path": "C:/Users/nabil/IdeaProjects/EPFC-introduction-to-databases/06- Aggregate functions/06 - Lecture slides",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.splitter.proportion": "0.30444443",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -79,11 +81,15 @@
       <workItem from="1781969918052" duration="367000" />
       <workItem from="1781987993226" duration="4305000" />
       <workItem from="1782034738466" duration="3545000" />
-      <workItem from="1782469189944" duration="314000" />
+      <workItem from="1782469189944" duration="4604000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
