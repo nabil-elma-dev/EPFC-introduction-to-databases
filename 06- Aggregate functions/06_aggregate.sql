@@ -19,46 +19,47 @@ Legal 👍
 */
 
 -- exercise 2-1
-SELECT count(*), spj.QTY
+SELECT spj.QTY,
+    COUNT(*) nb_delivery
 FROM spj
-group by spj.QTY
+GROUP BY spj.QTY;
 
 -- exercise 2-2
-SELECT spj.ID_S, count(*)
+SELECT spj.ID_S,
+    COUNT(*) nb_delivery
 FROM spj
-GROUP BY spj.ID_S
+GROUP BY spj.ID_S;
 
 -- exercise 2-3
 SELECT j.JNAME,
-       sum(spj.QTY)
+       SUM(spj.QTY) total_quantity
 FROM spj
     JOIN j ON spj.ID_J = j.ID_J
-GROUP BY j.ID_J,
-         j.JNAME
+GROUP BY spj.ID_J
 
 -- exercise 2-4
 SELECT spj.ID_S,
        spj.ID_P,
        spj.ID_J,
-       QTY * WEIGHT
+       QTY * WEIGHT total_weight
 FROM spj
-    JOIN p ON spj.ID_P=p.ID_P;
+    JOIN p ON spj.ID_P = p.ID_P;
 
 -- exercise 2-5
 SELECT spj.ID_J,
-       SUM(QTY * WEIGHT)
+       SUM(QTY * WEIGHT) total_weight
 FROM spj
     JOIN p ON spj.ID_P = p.ID_P
-GROUP BY ID_J;
+GROUP BY spj.ID_J;
 
 -- exercise 2-6
-SELECT MAX(QTY * WEIGHT)
+SELECT MAX(spj.QTY * p.WEIGHT) heaviest_delivery
 FROM spj
-    JOIN p ON spj.ID_P = p.ID_P
+    JOIN p ON spj.ID_P = p.ID_P;
 
 -- exercise 2-7
-SELECT spj.ID_J,
-       spj.ID_P,
+SELECT spj.ID_P,
+       spj.ID_J,
        SUM(qty) total
 FROM spj
 GROUP BY spj.ID_P,

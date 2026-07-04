@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/05 - DDL &amp;&amp; DML/05_DDL_DML.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/06- Aggregate functions/06_aggregate.sql" beforeDir="false" afterPath="$PROJECT_DIR$/06- Aggregate functions/06_aggregate.sql" afterDir="false" />
     </list>
@@ -24,34 +25,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/nabil/IdeaProjects/EPFC-introduction-to-databases/06- Aggregate functions/06 - Lecture slides",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "settings.editor.splitter.proportion": "0.30444443",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nabil/IdeaProjects/EPFC-introduction-to-databases/06- Aggregate functions&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.30444443&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\06- Aggregate functions" />
       <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\06- Aggregate functions\06 - Lecture slides" />
       <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\06- Aggregate functions\06 - Exercices instructions" />
       <recent name="C:\BD01\SQL Scripts" />
       <recent name="C:\BD01\04 - Recap 1 to 3\04 - Exercices instructions" />
-      <recent name="C:\BD01\03 - Auto-join\03 - Exercices instructions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\BD01\03 - Auto-join\03 - Lecture slides" />
@@ -81,7 +82,12 @@
       <workItem from="1781969918052" duration="367000" />
       <workItem from="1781987993226" duration="4305000" />
       <workItem from="1782034738466" duration="3545000" />
-      <workItem from="1782469189944" duration="4604000" />
+      <workItem from="1782469189944" duration="4945000" />
+      <workItem from="1782485836668" duration="1332000" />
+      <workItem from="1782551472451" duration="128000" />
+      <workItem from="1782582930071" duration="793000" />
+      <workItem from="1783022996451" duration="1210000" />
+      <workItem from="1783168046925" duration="1350000" />
     </task>
     <servers />
   </component>
