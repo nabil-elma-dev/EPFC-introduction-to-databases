@@ -1,42 +1,36 @@
 -- PHASE 0: Creating database
+DROP DATABASE IF EXISTS Cours;
 CREATE DATABASE Cours;
+USE Cours;
 
 -- PHASE 1: Creating tables
-    -- Person
-    CREATE TABLE Person (
-        Id_person INT NOT NULL,
-        name VARCHAR(30) NOT NULL
+    -- Professor
+    CREATE TABLE Professor(
+        Id_prof INT(11) NOT NULL,
+        name VARCHAR(128) NOT NULL,
+        PRIMARY KEY (Id_prof)
     );
 
-    ALTER TABLE Person
-    ADD CONSTRAINT pk_person
-    PRIMARY KEY(Id_person);
+    INSERT INTO Professor(Id_prof, name)
+    VALUES (1, 'ANDRE'),
+           (2, 'JACQUES');
 
+    -- Person
+    CREATE TABLE Person (
+        Id_person INT(11) NOT NULL,
+        name VARCHAR(128) NOT NULL,
+        PRIMARY KEY (Id_person)
+    );
     INSERT INTO Person(Id_person, name)
     VALUES (1, 'PAUL'),
            (2, 'PIERRE'),
            (3, 'JULES');
 
-
-    -- Professor
-    CREATE TABLE Professor(
-        Id_prof INT NOT NULL,
-        name VARCHAR(30) NOT NULL
-    );
-
-    ALTER TABLE Professor
-    ADD CONSTRAINT pk_prof
-    PRIMARY KEY(Id_prof);
-
-    INSERT INTO Professor(id_prof, name)
-    VALUES (1, 'ANDRE'),
-           (2, 'JACQUES');
-
     -- Formation
     CREATE TABLE Formation(
-        Id_formation INT NOT NULL,
-        class VARCHAR(30) NOT NULL,
-        prof INT,
+        Id_formation INT(11) NOT NULL,
+        class VARCHAR(128) NOT NULL,
+        prof INT(11),
         PRIMARY KEY(Id_formation),
         FOREIGN KEY (prof) REFERENCES Professor(Id_prof)
     );
@@ -51,17 +45,9 @@ CREATE DATABASE Cours;
         class INT NOT NULL,
         student INT NOT NULL,
         PRIMARY KEY(class, student),
+        FOREIGN KEY (class) REFERENCES Formation(Id_formation),
+        FOREIGN KEY (student) REFERENCES Person(Id_person)
     );
-
-    ALTER TABLE follows
-    ADD CONSTRAINT fk_student
-    FOREIGN KEY (student) REFERENCES person(Id_person);
-
-    -- THIS QUERY DOES NOT WORK!!!
-    ALTER TABLE follows
-    ADD CONSTRAINT fk_class
-    FOREIGN KEY follows(class) REFERENCES formation(Id_formation);
-
     INSERT INTO Follows(class, student)
     VALUES (1,2),
            (1,3),
