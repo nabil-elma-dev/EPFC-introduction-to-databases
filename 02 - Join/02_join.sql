@@ -1,3 +1,7 @@
+-- script used: spj_mysql.sql
+
+SET GLOBAL SQL_MODE = CONCAT(@@SQL_MODE, ',ONLY_FULL_GROUP_BY');
+
 -- Exercise 1
 SELECT spj.ID_J
 FROM spj JOIN p ON spj.ID_P = p.ID_P

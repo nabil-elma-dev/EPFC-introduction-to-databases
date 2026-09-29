@@ -1,3 +1,7 @@
+-- script used: spj_mysql.sql
+
+SET GLOBAL SQL_MODE = CONCAT(@@SQL_MODE, ',ONLY_FULL_GROUP_BY');
+
 -- exercise 1
 SELECT DISTINCT p.PNAME
 FROM p
