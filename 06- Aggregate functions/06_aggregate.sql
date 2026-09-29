@@ -9,7 +9,7 @@ Illegal: id_p on Select does not appear on GROUP BY
 b)  SELECT  id_s,
             SUM(qty)
     FROM spj
-Illegal: SUM(qty) cannon be applied to multple id_s
+Illegal: SUM(qty) cannon be applied to multiple id_s
 
 c) SELECT id_p,
           weight
@@ -35,7 +35,7 @@ SELECT j.JNAME,
        SUM(spj.QTY) total_quantity
 FROM spj
     JOIN j ON spj.ID_J = j.ID_J
-GROUP BY spj.ID_J
+GROUP BY spj.ID_J;
 
 -- exercise 2-4
 SELECT spj.ID_S,
