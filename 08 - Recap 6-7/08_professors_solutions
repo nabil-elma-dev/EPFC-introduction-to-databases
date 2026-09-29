@@ -1,0 +1,160 @@
+-- BD01/WGBD
+-- Correction du laboratoire 8
+
+-- Avant de commencer, appliquez la configuration suivante sur le moteur MySQL :
+SET GLOBAL SQL_MODE = CONCAT(@@SQL_MODE, ',ONLY_FULL_GROUP_BY');
+
+-- 1) Afficher le nombre de destinataires du message M2
+/*
+1
+*/
+select count(*)
+from Destinataires d
+where d.ID_message = 'M2';
+
+-- 2) Afficher l'âge de la personne la plus jeune.
+/*
+16
+*/
+select min(p.Age)
+from Personne p;
+
+-- 3) Afficher la date du message le plus récent.
+/*
+06/10/13
+*/
+select max(m.Date_Expedition)
+from Message m;
+
+-- 4) Afficher le nombre de personnes de moins de 30 ans
+/*
+4
+*/
+select count(*)
+from Personne p
+where p.Age < 30;
+
+-- 5) Afficher l'âge moyen des femmes.
+/*
+23
+*/
+select avg(p.Age)
+from Personne p
+where p.Sexe = 'F';
+
+-- 6) Afficher la moyenne du nombre de destinataires par message
+/*
+1.3333
+*/
+select count(*)/count(distinct d.id_message)
+from Destinataires d;
+
+-- 7) Afficher le nombre de personnes par sexe.
+/*
+F 2
+M 4
+*/
+select p.sexe, count(*)
+from Personne p
+group by p.sexe;
+
+-- 8) Afficher le nombre d'amis de P1 et de P2.
+/*
+P1 3
+P2 3
+*/
+select e.ssn1, count(*)
+from estAmi e
+where e.ssn1 = 'P1' or e.ssn1 = 'P2'
+group by e.ssn1;
+
+-- 9) Afficher les identifiants des personnes qui ont entre 1 et 2 amis.
+/*
+P3
+P4
+*/
+select e.ssn1
+from estAmi e
+group by e.ssn1
+having count(*)<3; -- pas besoin de count(*) >= 1 : s'il y a un groupe, le groupe contient
+                   -- au moins une ligne.
+
+-- 9bis) variante
+select p.Nom
+from estAmi e, personne p
+where e.SSN1 = p.SSN
+group by e.ssn1, p.Nom
+having count(*) < 3;
+
+-- 10) Afficher le nombre de destinataires de chaque message
+/*
+M1 2
+M2 1
+M3 1
+M4 2
+M5 1
+M6 1
+*/
+select d.id_message, count(*)
+from Destinataires d
+group by d.id_message;
+
+-- 10bis) variante
+select d.id_message, m.Contenu, count(*)
+from Destinataires d, message m
+where d.ID_Message = m.ID_Message
+group by d.id_message, m.Contenu;
+
+-- 10ter) variante
+select d.id_message, m.Contenu, p.Nom, count(*)
+from Destinataires d, message m, personne p
+where d.ID_Message = m.ID_Message
+  AND m.Expediteur = p.SSN
+group by d.id_message, m.Contenu, p.Nom;
+
+-- 11) Afficher les identifiants des messages adressés à deux personnes ou plus.
+/*
+M1
+M4
+*/
+select d.id_message
+from Destinataires d
+group by d.id_message
+having count(*)>=2;
+
+-- 12) Afficher le nom des femmes qui ont envoyé un seul message.
+/*
+Julie
+Marie
+*/
+select p.nom
+from Message m, Personne p
+where p.ssn = m.expediteur
+ and p.sexe = 'F'
+group by p.nom, p.SSN
+having count(*)=1;
+
+-- 13) Afficher le nombre de messages reçus en fonction du sexe du destinataire.
+/*
+F 4
+M 4
+*/
+select p.Sexe, count(*)
+from Personne p, Destinataires d
+where d.Destinataire = p.SSN
+group by p.Sexe;
+
+-- 14) Afficher le contenu et le nom de l'expéditeur des messages envoyés à une seule
+--     personne.
+/*
+Salut Paul
+On va boire un verre ? Julie
+LOL Marie
+Trololololol Remy
+*/
+select m.contenu, p.nom
+from Destinataires d, Message m, Personne p
+where d.id_message = m.id_message
+  and p.ssn = m.expediteur
+group by m.id_message, m.contenu, p.nom
+having count(*)=1;
