@@ -2,6 +2,8 @@
 <project version="4">
   <component name="DataSourcePerFileMappings">
     <file url="file://$PROJECT_DIR$/01 - Basic queries/01_basicQ.sql" value="0c22d6d7-b72c-43cc-8883-8d2659ca693c" />
+    <file url="file://$PROJECT_DIR$/02 - Join/02_join.sql" value="0c22d6d7-b72c-43cc-8883-8d2659ca693c" />
+    <file url="file://$PROJECT_DIR$/03 - Auto-join/03_auto-join.sql" value="0c22d6d7-b72c-43cc-8883-8d2659ca693c" />
     <file url="file://$PROJECT_DIR$/04 - Recap 1 to 3/04_recap_1_to_3.sql" value="0c22d6d7-b72c-43cc-8883-8d2659ca693c" />
     <file url="file://$PROJECT_DIR$/05 - DDL &amp;&amp; DML/05_DDL_DML.sql" value="0c22d6d7-b72c-43cc-8883-8d2659ca693c" />
     <file url="file://$PROJECT_DIR$/06- Aggregate functions/06_aggregate.sql" value="0c22d6d7-b72c-43cc-8883-8d2659ca693c" />

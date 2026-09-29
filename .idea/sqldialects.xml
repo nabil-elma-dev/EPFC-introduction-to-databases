@@ -2,6 +2,8 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/01 - Basic queries/01_basicQ.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/02 - Join/02_join.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/03 - Auto-join/03_auto-join.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/04 - Recap 1 to 3/04_recap_1_to_3.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/05 - DDL &amp;&amp; DML/05_DDL_DML.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/06- Aggregate functions/06_aggregate.sql" dialect="MySQL" />
