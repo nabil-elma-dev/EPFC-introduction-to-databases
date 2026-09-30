@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/08bis - more recap/08bis - Exercises Instructions/08bis_instructions_french.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/08bis - more recap/08bis_professors_solutions" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/08bis - more recap/08bis_recap.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08 - Recap 6-7/08_recap_6-7.sql" beforeDir="false" afterPath="$PROJECT_DIR$/08 - Recap 6-7/08_recap_6-7.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +39,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/nabil/IdeaProjects/EPFC-introduction-to-databases/08 - Recap 6-7/08 - Exercises Instructions",
+    "last_opened_file_path": "C:/Users/nabil/IdeaProjects/EPFC-introduction-to-databases/08bis - more recap/08bis - Exercises Instructions",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -57,11 +61,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\08bis - more recap\08bis - Exercises Instructions" />
+      <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\08bis - more recap" />
       <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\08 - Recap 6-7\08 - Exercises Instructions" />
       <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\05 - DDL &amp;&amp; DML\05 - Lecture slides" />
       <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\05 - DDL &amp;&amp; DML\05 - Exercices instructions" />
-      <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\06- Aggregate functions" />
-      <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\06- Aggregate functions\06 - Lecture slides" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\BD01\03 - Auto-join\03 - Lecture slides" />
@@ -99,7 +103,9 @@
       <workItem from="1783168046925" duration="1730000" />
       <workItem from="1783610214609" duration="6596000" />
       <workItem from="1784627758307" duration="2747000" />
-      <workItem from="1790683450095" duration="14764000" />
+      <workItem from="1790683450095" duration="15928000" />
+      <workItem from="1790784246491" duration="223000" />
+      <workItem from="1790784644556" duration="2450000" />
     </task>
     <servers />
   </component>

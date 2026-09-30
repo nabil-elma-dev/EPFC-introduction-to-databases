@@ -1,0 +1,116 @@
+-- BD01/WGBD
+-- EPFC-ULB
+-- Correction du complément au laboratoire 8
+
+-- 1) On souhaite obtenir les numéros de fournisseurs qui ont effectué au
+--    moins quatre livraisons
+/*
+S2
+S5
+*/
+SELECT SPJ.ID_S
+FROM SPJ
+GROUP BY SPJ.ID_S
+HAVING COUNT(*) >= 4;
+
+-- 2) On souhaite obtenir les numéros de fournisseurs qui ont effectué au
+--    moins quatre livraisons concernant au moins trois pièces différentes.
+/*
+S5
+*/
+SELECT SPJ.ID_S
+FROM SPJ
+GROUP BY SPJ.ID_S
+HAVING COUNT(*) >= 4 AND COUNT(DISTINCT SPJ.ID_P)>=3;
+
+-- 3) On souhaite obtenir les numéros de pièces pour les pièces fournies
+--    par un fournisseur de Londres à un projet de Londres.
+/*
+P6
+*/
+SELECT DISTINCT SPJ.ID_P
+FROM SPJ, S, J
+WHERE SPJ.ID_S = S.ID_S
+  AND SPJ.ID_J = J.ID_J
+  AND S.CITY = 'London'
+  AND J.CITY = 'London';
+
+-- 4) On souhaite obtenir les numéros de projets et la quantité totale
+--    livrée  pour chacun des projets fourni par un même fournisseur,
+--    pour autant que la quantité totale livrée soit supérieure à 500 pièces.
+/*
+J4 700 (S1)
+J4 2100 (S5)
+J5 600 (S2)
+J7 800 (S2)
+*/
+SELECT SPJ.ID_J, SUM(SPJ.QTY)
+FROM SPJ
+GROUP BY SPJ.ID_J, SPJ.ID_S
+HAVING SUM(SPJ.QTY) > 500;
+
+
+-- 5) On souhaite afficher, pour chaque pièce fournie à un projet, le numéro
+--    de la pièce, le numéro du projet et la quantité totale fournie dont
+--    l’entête sera TOTAL.
+/* 21 resultats */
+SELECT SPJ.ID_P, SPJ.ID_J, SUM(SPJ.QTY) TOTAL
+FROM SPJ
+GROUP BY SPJ.ID_P, SPJ.ID_J;
+
+-- 6) Obtenir, par pièce fournie plus que deux fois, le numéro de pièce et
+--    le nombre de fois qu’elle a été fournie.
+/*
+P1 3
+P3 9
+P5 4
+P6 4
+*/
+SELECT SPJ.ID_P, COUNT(*)
+FROM SPJ
+GROUP BY SPJ.ID_P
+HAVING COUNT(*)>2;
+
+-- 7) Obtenir toutes les paires de villes telles que le fournisseur situé
+--    dans la première ville fournisse une pièce entreposée dans la seconde
+--    ville.
+/* 7 resultats */
+SELECT DISTINCT S.CITY, P.CITY
+FROM SPJ, S, P
+WHERE SPJ.ID_S = S.ID_S
+  AND SPJ.ID_P = P.ID_P;
+
+-- 8) Obtenir le nom des fournisseurs qui fournissent au moins une pièce rouge
+--    et tel que le fournisseur ou la pièce se situent à Paris.
+/* Blake */
+SELECT DISTINCT S.SNAME
+FROM SPJ, S, P
+WHERE SPJ.ID_S = S.ID_S
+  AND SPJ.ID_P = P.ID_P
+  AND P.COLOR = 'Red'
+  AND (S.CITY = 'Paris' OR P.CITY='Paris');
+
+-- 9) Obtenir la moyenne des quantités livrées de chaque fournisseur de
+--    Londres dont le total des quantités livrées est supérieur strictement
+--    à 800.
+/* 450.0000 S1 */
+SELECT AVG( QTY ) , SPJ.ID_S
+FROM SPJ, S
+WHERE SPJ.ID_S = S.ID_S
+AND S.CITY =  'London'
+GROUP BY SPJ.ID_S
+HAVING SUM( QTY ) >800;
+
+-- 10) Obtenir les couples d'identifiants de fournisseurs différents qui
+--     fournissent la même pièce pour autant qu'ils fournissent la pièce
+--     en même quantité
+/*
+S2 S3
+S2 S5
+S3 S5
+*/
+SELECT DISTINCT C1.ID_S, C2.ID_S
+FROM SPJ C1, SPJ C2
+WHERE C1.ID_S < C2.ID_S
+  AND C1.ID_P = C2.ID_P
+  AND C1.QTY = C2.QTY;
