@@ -10,5 +10,6 @@
     <file url="file://$PROJECT_DIR$/07 - Aggregate functions bis/07_aggregate_bis.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/08 - Recap 6-7/08_recap_6-7.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/08bis - more recap/08bis_recap.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/09 - Nested queries/09_nested_queries.sql" dialect="MySQL" />
   </component>
 </project>
