@@ -7,7 +7,6 @@
     <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/09 - Nested queries/09_nested_queries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/09 - Nested queries/09_nested_queries.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/09 - Nested queries/09_professors_solutions" beforeDir="false" afterPath="$PROJECT_DIR$/09 - Nested queries/09_professors_solutions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +104,7 @@
       <workItem from="1790784644556" duration="2984000" />
       <workItem from="1790790446853" duration="41000" />
       <workItem from="1790843144415" duration="899000" />
-      <workItem from="1790848909850" duration="1469000" />
+      <workItem from="1790848909850" duration="3937000" />
     </task>
     <servers />
   </component>
