@@ -63,4 +63,31 @@ WHERE  p.COLOR != ALL (SELECT p.COLOR
 SELECT DISTINCT p.PNAME
 FROM p
 WHERE p.WEIGHT >= ALL (SELECT p.WEIGHT
-                       FROM p)
+                       FROM p);
+
+-- Exercise 9
+SELECT DISTINCT spj.ID_S
+FROM spj
+WHERE spj.ID_S NOT IN (SELECT spj.ID_S
+                       FROM spj
+                          JOIN p ON spj.ID_P = p.ID_P
+                       WHERE lower(p.COLOR) = 'blue');
+
+-- Exercise 10
+SELECT count(*)
+FROM spj
+WHERE spj.QTY < 350
+    AND ID_S NOT IN (SELECT spj.ID_S
+                     FROM spj
+                        JOIN j ON spj.ID_J = j.ID_J
+                     WHERE lower(j.CITY) = 'paris');
+
+-- Exercise 11
+SELECT s.ID_S
+FROM s
+WHERE s.ID_S NOT IN (SELECT spj.ID_S
+                     FROM spj
+                        GROUP BY s.ID_S, spj.ID_P
+                     HAVING sum(spj.QTY) > 650)
+
+
