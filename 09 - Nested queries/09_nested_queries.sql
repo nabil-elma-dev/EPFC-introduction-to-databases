@@ -21,3 +21,32 @@ FROM s
 WHERE s.ID_S IN (SELECT spj.ID_S
                  FROM spj
                  WHERE spj.ID_P = 'P3');
+
+-- Exercise 4
+SELECT DISTINCT s.SNAME
+FROM s
+WHERE s.ID_S IN (SELECT spj.ID_S
+                 FROM spj
+                 WHERE spj.ID_P IN (SELECT p.ID_P
+                                    FROM p
+                                    WHERE lower(p.COLOR) = 'red')
+                 );
+
+-- Exercise 5
+SELECT s.ID_S,
+       s.SNAME
+FROM s
+WHERE s.ID_S IN (SELECT spj.ID_S
+                 FROM spj
+                 WHERE spj.ID_J IN(SELECT j.ID_J
+                                   FROM j
+                                   WHERE lower(j.JNAME) = 'console')
+                 );
+
+-- Exercice 6
+SELECT DISTINCT j.JNAME
+FROM j
+WHERE j.ID_J IN (SELECT spj.ID_J
+                 FROM spj
+                 GROUP BY spj.ID_J
+                 HAVING sum(spj.QTY) > 1000);
