@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09 - Nested queries/09_nested_queries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/09 - Nested queries/09_nested_queries.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09 - Nested queries/09_professors_solutions" beforeDir="false" afterPath="$PROJECT_DIR$/09 - Nested queries/09_professors_solutions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +36,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nabil/IdeaProjects/EPFC-introduction-to-databases/08bis - more recap/08bis - Exercises Instructions&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nabil/IdeaProjects/EPFC-introduction-to-databases/09 - Nested queries/09 - Exercices instructions&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -57,11 +58,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\09 - Nested queries\09 - Exercices instructions" />
+      <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\09 - Nested queries\09 - Lecture slides" />
       <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\08bis - more recap\08bis - Exercises Instructions" />
       <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\08bis - more recap" />
       <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\08 - Recap 6-7\08 - Exercises Instructions" />
-      <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\05 - DDL &amp;&amp; DML\05 - Lecture slides" />
-      <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\05 - DDL &amp;&amp; DML\05 - Exercices instructions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\BD01\03 - Auto-join\03 - Lecture slides" />
@@ -103,6 +104,8 @@
       <workItem from="1790784246491" duration="223000" />
       <workItem from="1790784644556" duration="2984000" />
       <workItem from="1790790446853" duration="41000" />
+      <workItem from="1790843144415" duration="899000" />
+      <workItem from="1790848909850" duration="1469000" />
     </task>
     <servers />
   </component>

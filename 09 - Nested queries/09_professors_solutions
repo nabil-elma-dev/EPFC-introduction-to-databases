@@ -1,0 +1,319 @@
+-- BD01/WGBD
+-- EPFC-ULB
+-- Corrections du laboratoire 9
+
+-- Avant de commencer, appliquez la configuration suivante sur le moteur MySQL :
+SET GLOBAL SQL_MODE = CONCAT(@@SQL_MODE, ',ONLY_FULL_GROUP_BY');
+
+-- Q1
+/*
+Screw
+Cam
+Cog
+*/
+SELECT DISTINCT PNAME
+FROM P
+WHERE ID_P IN (	SELECT ID_P
+				FROM SPJ
+				WHERE QTY = 500 );
+
+-- Q2
+/*
+Screw
+Cam
+*/
+-- Le nom des pièces dont l'ID est
+-- DANS l'ensemble des IDs des pièces
+--      fournies par le fournisseur S2
+SELECT DISTINCT PNAME
+FROM P
+WHERE ID_P IN (	SELECT ID_P
+				FROM SPJ
+				WHERE ID_S = 'S2' );
+
+-- Q3
+/*
+Jones
+Blake
+Adams
+*/
+-- Le nom des fournisseurs dont l'ID est
+-- DANS l'ensemble des IDs des fournisseurs
+--      qui ont fourni la pièce P3
+SELECT DISTINCT SNAME
+FROM S
+WHERE ID_S IN (	SELECT ID_S
+				FROM SPJ
+				WHERE ID_P = 'P3');
+
+-- Q4
+/*
+Smith
+Blake
+Clark
+Adams
+*/
+-- première manière : deux IN
+-- nom des fournisseurs dont l'ID est
+-- DANS ( l'ensemble des IDs des fournisseurs
+--        des livraisons dont le produit est DANS ( l'ensemble des produits
+--												    rouges
+--                                                )
+--      )
+SELECT DISTINCT SNAME
+FROM S
+WHERE ID_S IN (	SELECT ID_S
+				FROM SPJ
+				WHERE ID_P IN ( SELECT ID_P
+								FROM P
+								WHERE Color='Red'
+							  )
+			  );
+
+-- seconde manière : un IN et une jointure
+SELECT DISTINCT SNAME
+FROM S
+WHERE ID_S IN ( SELECT ID_S
+				FROM SPJ, P
+				WHERE SPJ.ID_P = P.ID_P
+				  AND P.Color = 'Red' );
+
+-- troisième manière : deux jointures (sans IN)
+SELECT DISTINCT SNAME
+FROM SPJ, S, P
+WHERE SPJ.ID_S = S.ID_S
+  AND SPJ.ID_P = P.ID_P
+  AND P.Color = 'Red';
+
+-- Q5
+/*
+S1 Smith
+S2 Jones
+S5 Adams
+*/
+SELECT ID_S, SNAME
+FROM S
+WHERE ID_S IN (	SELECT SPJ.ID_S
+				FROM SPJ, J
+				WHERE SPJ.ID_J = J.ID_J
+				  AND J.JNAME = 'Console' );
+
+-- Q6
+/*
+Display
+Console
+RAID
+Tape
+*/
+-- On souhaite connaître le nom des projets pour lesquels on a fourni au total
+-- plus de 1000 pièces.
+SELECT DISTINCT JNAME
+FROM J
+WHERE ID_J IN ( SELECT ID_J
+				FROM SPJ
+				GROUP BY ID_J
+				HAVING SUM(QTY)>1000 );
+
+-- Q7
+
+-- avec ANY
+SELECT DISTINCT pname
+FROM p
+WHERE color = ANY(
+		SELECT color
+		FROM p
+		GROUP BY color
+		HAVING count( * ) =1
+);
+
+-- avec ALL
+SELECT DISTINCT pname
+FROM p
+WHERE color <> ALL (
+    SELECT color
+    FROM p
+    GROUP BY color
+    HAVING count(*) > 1
+);
+
+-- Q8
+/* Cog */
+select DISTINCT pname
+from p
+where weight >= all (	select weight
+						from p
+					);
+
+-- autre version
+select DISTINCT pname
+from p
+where weight = ( select max(weight)
+                 from p
+               );
+
+-- Q9
+/* S1 S4 */
+-- tous les fournisseurs	MOINS ceux qui fournissent une pièce bleue
+-- Q14 : Différence entre (a) et (b)
+-- (a) les identifiants de tous les fournisseurs
+select id_s
+from s;
+-- (b) les identifiants des fournisseurs qui fournissent une pièce bleue
+select distinct spj.id_s
+from spj, p
+where spj.id_p = p.id_p
+and p.color='Blue';
+-- SOLUTION avec IN : différence entre ces deux ensembles
+select id_s
+from s
+where id_s not in (
+	select distinct spj.id_s
+	from spj, p
+	where spj.id_p = p.id_p
+	and p.color='Blue'
+);
+
+-- SOLUTION avec EXCEPT : différence entre ces deux ensembles
+select id_s
+from s
+	EXCEPT
+select spj.id_s
+from spj, p
+where spj.id_p = p.id_p
+and p.color='Blue';
+
+-- Q10
+/* 8 */
+-- toutes les livraisons de moins de 350 unités dont le fournisseur n'est pas dans
+-- les fournisseurs qui ont fourni à paris
+select count(*)
+from spj
+where qty<350
+  and id_s not in (
+		select id_s
+		from spj, j
+		where spj.id_j = j.id_j
+		  and j.city='Paris'
+);
+
+-- Q11
+-- tous les fournisseurs moins ceux qui ont fourni 650 pièces identiques
+/* S3 S4 */
+select id_s
+from s
+where id_s not in(
+	select id_s
+	from spj
+	group by id_s, id_p
+	having sum(qty)>=650
+);
+
+-- avec EXCEPT
+select id_s
+from s
+	EXCEPT
+select id_s
+from spj
+group by id_s, id_p
+having sum(qty)>=650;
+
+-- Q12
+/* S5 */
+-- (a) les fournisseurs qui ont fait 4 livraisons
+-- INTERSECT
+-- (b) ceux qui ont livré 3 pièces différentes
+
+-- (a)
+select id_s
+from spj
+group by id_s
+having count(*) >= 4;
+
+-- (b)
+select id_s
+from spj
+group by id_s
+having count(distinct id_p) >= 3;
+
+-- (a) intersect (b)
+select id_s
+from spj
+where id_s in (
+   select id_s
+   from spj
+   group by id_s
+   having count(distinct id_p) >= 3
+)
+group by id_s
+having count(*) >= 4;
+
+-- avec INTERSECT
+select id_s
+from spj
+group by id_s
+having count(*) >= 4
+	INTERSECT
+select id_s
+from spj
+group by id_s
+having count(distinct id_p) >= 3;
+
+-- sans sous-requête
+select id_s
+from spj
+group by id_s
+having count(*) >= 4
+   and count(distinct id_p) >= 3;
+
+-- Q13 : Intersection entre (a) et (b)
+/* S2 et S5 */
+
+-- (a) quels sont les fournisseurs qui ont fourni dans trois villes différentes ?
+select spj.id_s
+from spj, j
+where spj.id_j = j.id_j
+group by spj.id_s
+having count(distinct j.city)>=3;
+
+-- (b) quels sont les fournisseurs qui ont fourni des pièces venant de deux villes
+--    différentes ?
+select spj.id_s
+from spj, p
+where spj.id_p = p.id_p
+group by spj.id_s
+having count(distinct p.city) >=2;
+
+-- SOLUTION avec IN : faire l'intersection de ces deux ensembles
+select spj.id_s
+from spj, j
+where spj.id_j = j.id_j and spj.id_s in(
+	select spj.id_s
+	from spj, p
+	where spj.id_p = p.id_p
+    group by spj.id_s
+    having count(distinct p.city) >= 2
+)
+group by spj.id_s
+having count(distinct j.city) >= 3;
+
+-- avec INTERSECT
+select spj.id_s
+from spj, j
+where spj.id_j = j.id_j
+group by spj.id_s
+having count(distinct j.city) >= 3
+	INTERSECT
+select spj.id_s
+from spj, p
+where spj.id_p = p.id_p
+group by spj.id_s
+having count(distinct p.city) >= 2;
+
+-- sans sous-requêtes
+select id_s
+from spj, j, p
+where spj.ID_J = j.ID_J
+  and spj.ID_P = p.ID_P
+group by id_s
+having count(distinct j.CITY) >= 3
+   and count(distinct p.CITY) >= 2;
