@@ -88,6 +88,33 @@ FROM s
 WHERE s.ID_S NOT IN (SELECT spj.ID_S
                      FROM spj
                         GROUP BY s.ID_S, spj.ID_P
-                     HAVING sum(spj.QTY) > 650)
+                     HAVING sum(spj.QTY) > 650);
 
+-- Exercise 12
+SELECT spj.ID_S
+FROM spj
+GROUP BY spj.ID_S
+    HAVING count(*) >= 4
+
+    INTERSECT
+
+SELECT spj.ID_S
+FROM spj
+GROUP BY spj.ID_S
+    HAVING count(DISTINCT spj.ID_P) >= 3;
+
+-- Exercise 13
+SELECT spj.ID_S
+FROM spj
+    JOIN j ON spj.ID_J = j.ID_J
+GROUP BY spj.ID_S
+    HAVING count(DISTINCT j.CITY) >=3
+
+    INTERSECT
+
+SELECT spj.ID_S
+FROM spj
+    JOIN p ON spj.ID_P = p.ID_P
+GROUP BY spj.ID_S
+    HAVING count(DISTINCT p.CITY) >=2;
 
