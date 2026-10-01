@@ -43,10 +43,24 @@ WHERE s.ID_S IN (SELECT spj.ID_S
                                    WHERE lower(j.JNAME) = 'console')
                  );
 
--- Exercice 6
+-- Exercise 6
 SELECT DISTINCT j.JNAME
 FROM j
 WHERE j.ID_J IN (SELECT spj.ID_J
                  FROM spj
                  GROUP BY spj.ID_J
                  HAVING sum(spj.QTY) > 1000);
+
+-- Exercise 7
+SELECT DISTINCT p.PNAME
+FROM p
+WHERE  p.COLOR != ALL (SELECT p.COLOR
+                      FROM p
+                      GROUP BY p.COLOR
+                      HAVING count(*) > 1);
+
+-- Exercise 8
+SELECT DISTINCT p.PNAME
+FROM p
+WHERE p.WEIGHT >= ALL (SELECT p.WEIGHT
+                       FROM p)
