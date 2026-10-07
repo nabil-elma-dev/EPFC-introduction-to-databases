@@ -25,7 +25,7 @@ Marie
 */
 
 select distinct p.nom
-from personne p
+from personne pid
 where p.SSN IN (select d.destinataire
                 from destinataires d
                 where d.id_message='M4');
