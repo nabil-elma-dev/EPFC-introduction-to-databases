@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/07 - Aggregate functions bis/07 - Aggregate functions bis.iml" filepath="$PROJECT_DIR$/07 - Aggregate functions bis/07 - Aggregate functions bis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10 - Nested queries 2/10 - Nested queries 2.iml" filepath="$PROJECT_DIR$/10 - Nested queries 2/10 - Nested queries 2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/BD01.iml" filepath="$PROJECT_DIR$/.idea/BD01.iml" />
     </modules>
   </component>
