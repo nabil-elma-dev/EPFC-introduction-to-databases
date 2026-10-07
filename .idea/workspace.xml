@@ -5,25 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/11 - Nested queries 3/11_nested_queries3.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/11 - Nested queries 3/11_professors_solutions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/07d8a6d3-eba8-4e15-a3ce-fae31748ad5a.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/07d8a6d3-eba8-4e15-a3ce-fae31748ad5a/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0c22d6d7-b72c-43cc-8883-8d2659ca693c.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0c22d6d7-b72c-43cc-8883-8d2659ca693c/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0c22d6d7-b72c-43cc-8883-8d2659ca693c/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0c22d6d7-b72c-43cc-8883-8d2659ca693c/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6b1abe9e-bbb7-4e9c-a919-856324260853.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6b1abe9e-bbb7-4e9c-a919-856324260853/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92b98bd7-7956-4c5f-a0ca-79d79411c71d.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92b98bd7-7956-4c5f-a0ca-79d79411c71d/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92b98bd7-7956-4c5f-a0ca-79d79411c71d/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/92b98bd7-7956-4c5f-a0ca-79d79411c71d/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/10 - Nested queries 2/10 - Exercices Instructions/bdd_tp10_sans_reponses.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/10 - Nested queries 2/10 - Exercises Instructions/10_Instructions_french.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/11 - Nested queries 3/11_nested_queries3.sql" beforeDir="false" afterPath="$PROJECT_DIR$/11 - Nested queries 3/11_nested_queries3.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
