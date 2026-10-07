@@ -20,7 +20,7 @@ WHERE m.Expediteur = 'P1';
 
 -- Exercise 4
 SELECT DISTINCT p.Nom
-FROM personne p
+FROM Personne p
 WHERE p.Sexe = 'M'
     ORDER BY p.Nom;
 
