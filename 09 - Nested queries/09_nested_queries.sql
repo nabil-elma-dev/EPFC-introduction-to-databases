@@ -118,3 +118,22 @@ FROM spj
 GROUP BY spj.ID_S
     HAVING count(DISTINCT p.CITY) >=2;
 
+-- Exercice 14 (Extra)
+-- 14. On souhaite trouver les fournisseurs qui ont livré tous les produits.
+
+SELECT spj.ID_S
+FROM spj
+    JOIN p ON spj.ID_P = p.ID_P
+GROUP BY spj.ID_S
+HAVING count(DISTINCT p.ID_P) = (SELECT count(*)
+                                 FROM p);
+
+-- Professor's solution
+SELECT *
+FROM s
+WHERE ID_S IN (SELECT ID_S
+               FROM spj
+               GROUP BY ID_S
+               HAVING COUNT(DISTINCT id_p) = (select COUNT(*)
+                                              from p)
+               );
