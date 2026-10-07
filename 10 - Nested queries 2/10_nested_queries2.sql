@@ -81,3 +81,61 @@ WHERE p.SSN IN (SELECT DISTINCT d.Destinataire
                                                             WHERE lower(p.Sexe) = 'm')
                                      )
                 );
+
+-- Exercise 8
+SELECT p.*
+FROM Personne p
+WHERE p.SSN not IN (SELECT m.Expediteur
+                    FROM Message m);
+
+-- Exercise 9
+SELECT p.*
+FROM Personne p
+WHERE p.SSN not IN (SELECT d.Destinataire
+                    FROM Destinataires d);
+
+-- Exercise 10
+SELECT p.*
+FROM Personne p
+WHERE p.SSN not IN (SELECT m.Expediteur
+                    FROM Message m
+                    WHERE m.ID_Message IN (SELECT d.ID_Message
+                                           FROM Destinataires d
+                                           WHERE d.Destinataire IN (SELECT p_dest.SSN
+                                                                    FROM Personne p_dest
+                                                                    WHERE lower(p_dest.Sexe) = 'm')
+                                           )
+                    );
+
+-- Exercise 11
+SELECT m.*
+FROM Message m
+WHERE m.Date_Expedition >= ALL (SELECT m.Date_Expedition
+                                FROM Message m);
+
+-- Exercise 12
+SELECT p.*
+FROM Personne p
+WHERE p.Age <= ALL (SELECT p.Age
+                    FROM Personne p);
+
+SELECT p.*
+FROM Personne p
+WHERE p.Age = (SELECT min(p.Age)
+               FROM Personne p);
+
+-- Exercise 13
+SELECT m.*
+FROM Message m
+WHERE m.Date_Expedition > ANY (SELECT m.Date_Expedition
+                               FROM Message m );
+
+-- Exercise 14
+SELECT p.*
+FROM Personne p
+WHERE p.SSN in (SELECT ea.SSN1
+                FROM EstAmi ea
+                GROUP BY ea.SSN1
+                HAVING count(*) >= ALL (SELECT count(*)
+                                        FROM EstAmi ea
+                                        GROUP BY ea.SSN1) )

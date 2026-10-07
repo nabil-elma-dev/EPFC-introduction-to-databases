@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/10 - Nested queries 2/10_nested_queries2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/10 - Nested queries 2/10_nested_queries2.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/10 - Nested queries 2/10_professors_solutions" beforeDir="false" afterPath="$PROJECT_DIR$/10 - Nested queries 2/10_professors_solutions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +88,7 @@
       <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\08 - Recap 6-7\08 - Exercises Instructions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/10 - Nested queries 2" />
       <recent name="C:\BD01\03 - Auto-join\03 - Lecture slides" />
       <recent name="C:\BD01\03 - Auto-join" />
       <recent name="C:\BD01\01 - basic queries" />
