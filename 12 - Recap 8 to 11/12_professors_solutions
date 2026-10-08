@@ -1,0 +1,259 @@
+-- WGBD et BD01
+-- Séance 12 : révisions
+-- EPFC-ULB
+
+-- Avant de commencer, appliquez la configuration suivante sur le moteur MySQL :
+SET GLOBAL SQL_MODE = CONCAT(@@SQL_MODE, ',ONLY_FULL_GROUP_BY');
+
+-- Q1
+-- Quel est le nom et le poids des personnes de moins de 32 ans qui ont mangé un
+-- hamburger de bœuf de plus de 1000 calories ?
+select distinct p.nom, p.poids
+from Personne p, Mange m, Hamburger h
+where p.ID = m.ID_P and h.ID = m.ID_H
+and h.Genre = 'Boeuf' and h.Calories > 1000
+and p.age < 32;
+-- Lisa 50
+
+-- Q2
+-- Quel est le nom et l’âge des hommes de plus de 60 kg qui ont mangé un hamburger de
+-- poulet et qui lui ont donné une note strictement inférieure à 7 ?
+select distinct p.nom, p.age
+from Personne p, Mange m, Hamburger h
+where p.ID = m.ID_P and h.ID = m.ID_H
+and h.Genre = 'Poulet' and m.Note < 7
+and p.poids > 60 and p.sexe = 'M';
+-- Tony 33
+-- Marc 60
+
+-- Q3
+-- Quel est le nom des hamburgers et la moyenne des notes pour les hamburgers ayant été
+-- mangés par au moins 3 personnes différentes ?
+select h.nom, avg(m.note)
+from Hamburger h, Mange m
+where h.ID = m.ID_H
+group by h.ID, h.nom
+having count(DISTINCT m.ID_P) >= 3;
+-- Bicky 6.75
+-- Bicky Poulet Cheese 5,66
+
+-- Q4
+-- Quel est le nom des hamburgers et le nombre de personnes différentes les ayant mangé
+-- pour les hamburgers dont la moyenne des notes est supérieure ou égale à 6 ?
+select h.nom, count(DISTINCT m.ID_P)
+from Hamburger h, Mange m
+where h.ID = m.ID_H
+group by h.ID, h.nom
+having avg(m.note) >= 6;
+-- Note : on peut grouper par h.nom car le schéma mentionne que le nom est unique
+-- Bicky 4
+-- Bicky Poulet 2
+-- Mega Burger 1
+
+-- Q5
+-- Quel est le nom et le sexe des personnes qui ont mangé au moins 3 fois le même
+-- hamburger ?
+select distinct p.nom, p.sexe
+from Personne p join Mange m on p.ID = m.ID_P
+group by p.id, m.id_h, p.nom, p.sexe
+having count(*) >= 3;
+-- Note : on doit grouper ici par p.id car le nom d'une personne n'est pas unique
+-- Lisa F
+
+-- ou
+
+select distinct nom, sexe from Personne
+where id in
+	(select id_p from mange
+     			 group by id_p,id_h
+     			 having count(*) >= 3
+    );
+
+-- ou encore
+
+select distinct p.nom, p.sexe
+from Hamburger h, Personne p
+where (select count(*) from Mange m where m.ID_H = h.ID and p.ID = m.ID_P) >= 3;
+
+
+
+-- Q6
+-- Quelles sont les dates où le même hamburger a été au moins deux fois ?
+select distinct m.date_consommation
+from Mange m, Hamburger h
+where (select count(*)
+       from Mange m2
+       where m.date_consommation = m2.date_consommation
+         and h.ID = m2.ID_H) >=2;
+-- 29/5
+-- 21/5
+
+-- ou
+select m.date_consommation
+from Mange m
+group by m.date_consommation, id_h
+having count(*) >= 2;
+
+-- Q7
+-- Quel est le nom des hamburgers qui ont été mangés par un homme de plus de 100 kg et
+-- qui n’ont jamais été mangés par une femme de plus de 30 ans ?
+select h.nom
+from Hamburger h
+where h.ID IN
+  (select m.ID_H
+   from Mange m, Personne p
+   where m.ID_P = p.ID
+     and p.Poids > 100
+     and p.Sexe = 'M')
+and h.ID NOT IN
+  (select m.ID_H
+  from Mange m, Personne p
+  where m.ID_P = p.ID
+    and p.Age > 30
+    and p.Sexe = 'F');
+-- Bicky poulet cheese
+
+-- Q8
+-- Quel est le nom des personnes qui ont mangé un hamburger de poulet et qui n’ont jamais
+-- mangé un hamburger de bœuf de moins de 1000 calories ?
+select p.nom
+from Personne p
+where p.ID IN
+  (select m.ID_P
+   from Mange m, Hamburger h
+   where m.ID_H = h.ID
+     and h.Genre='Poulet')
+and p.ID NOT IN
+  (select m.ID_P
+   from Mange m, Hamburger h
+   where m.ID_H = h.ID
+     and h.Genre='Boeuf'
+     and h.Calories < 1000);
+-- Tony
+-- Lisa
+-- Marc
+
+-- Q9
+-- Quel est le nom des femmes qui ont mangé tous les hamburgers de poulet ?
+select p.nom
+from Personne p, Mange m, Hamburger h
+where p.ID = m.ID_P
+  and h.ID = m.ID_H
+  and p.Sexe = 'F'
+  and h.Genre = 'Poulet'
+group by p.ID, p.nom
+having count(distinct id_h) = (select count(*) from Hamburger where Genre='Poulet');
+
+
+-- avec une division (ne fait pas partie de la matiere)
+select p.nom
+from Personne p
+where p.Sexe = 'F'
+and not exists(
+ select *
+ from Hamburger h
+ where h.Genre='Poulet'
+   and not exists(
+     select *
+     from Mange m
+     where m.ID_H = h.ID
+       and m.ID_P = p.ID)
+);
+-- Lisa
+
+-- Q10
+-- Quel est le nom des hamburgers de boeuf qui ont été mangés par toutes les personnes de
+-- plus de 80 kilos ?
+select h.nom
+from Hamburger h, Mange m, Personne p
+where h.ID = m.ID_H
+  and p.ID = m.ID_P
+  and h.Genre = 'Boeuf'
+  and p.Poids > 80
+group by h.ID, h.nom
+having count(distinct m.ID_P) = (select count(*)
+                                 from Personne p
+                                 where p.poids > 80);
+
+-- Note : on peut grouper ici soit par h.ID soit par h.Nom, soit par les deux.
+--        ID est unique (c'est la clé primaire) et le schéma dit que le nom est unique aussi.
+
+
+-- avec une division (ne fait pas partie de la matiere)
+select h.nom
+from Hamburger h
+where h.Genre='Boeuf'
+and not exists(
+  select * from
+  Personne p
+  where p.Poids > 80
+  and not exists(
+    select *
+    from Mange m
+    where m.ID_P = p.ID
+      and m.ID_H = h.ID
+));
+-- Bicky
+
+-- Q11
+-- Affichez tous les hamburgers sauf le plus calorique. (Tous sauf le Giga Burger)
+select h.nom
+from Hamburger h
+where h.Calories <> (select max(Calories) from Hamburger);
+
+-- ou --
+
+select h.nom
+from Hamburger h
+where h.Calories < ANY (select Calories from Hamburger);
+
+-- Q12
+-- Quel est l'homme le plus lourd qui a mangé un hamburger de poulet ? (P3)
+select distinct p.ID
+from Personne p, Hamburger h, Mange m
+where p.ID = m.ID_P
+  and h.ID = m.ID_H
+  and p.Sexe = 'M'
+  and h.Genre = 'Poulet'
+  and p.Poids = (
+	select max(p.Poids)
+	from Personne p, Hamburger h, Mange m
+	where p.ID = m.ID_P
+ 	 and h.ID = m.ID_H
+ 	 and p.Sexe = 'M'
+ 	 and h.Genre = 'Poulet'
+);
+
+-- Q13
+-- Quels sont les hamburgers qui ont été mangés par des hommes et des femmes ?
+-- (H1, H2 et H4)
+select h.ID
+from Hamburger h
+where h.ID IN (select m.ID_H
+               from Mange m, Personne p
+               where m.ID_P = p.ID
+                 and p.Sexe = 'M'
+               )
+  and h. ID IN (select m.ID_H
+               from Mange m, Personne p
+               where m.ID_P = p.ID
+                 and p.Sexe = 'F'
+               );
+
+-- ou --
+
+select m.ID_H
+from mange m
+join personne p on m.ID_P = p.ID_P
+group by m.ID_H
+having count(distinct p.sexe) = 2;
+
+-- Q14
+-- Qui a mangé le moins d'hamburger ?
+-- (P1 et P2)
+select m.ID_P
+from Mange m
+group by m.ID_P
+having count(*) <= ALL (select count(*)
+                        from Mange m
+                        group by m.ID_P);
