@@ -52,3 +52,52 @@ WHERE exists(SELECT *
             GROUP BY m.ID_P, m.ID_H
                 HAVING count(*) >=3
             );
+
+-- Exercise 6
+SELECT m.Date_Consommation
+FROM Mange m
+GROUP BY m.Date_Consommation, m.ID_H
+    HAVING count(*) >= 2;
+
+-- Exercise 7
+SELECT DISTINCT h.Nom
+FROM Hamburger h
+WHERE exists(SELECT *
+             FROM Mange m
+                JOIN Personne p ON m.ID_P = p.ID
+             WHERE h.ID = m.ID_H
+                AND lower(p.Sexe) = 'm'
+                AND p.Poids > 100)
+AND not exists(SELECT *
+               FROM Mange m
+                        JOIN Personne p ON m.ID_P = p.ID
+               WHERE h.ID = m.ID_H
+                 AND lower(p.Sexe) = 'f'
+                 AND p.Age > 30);
+
+-- Exercise 8
+SELECT DISTINCT p.Nom
+FROM Personne p
+WHERE exists(SELECT *
+             FROM Mange m
+                JOIN Hamburger h ON m.ID_H = h.ID
+             WHERE p.ID = m.ID_P
+                AND lower(h.Genre) = 'poulet')
+AND not exists(SELECT *
+               FROM Mange m
+                        JOIN Hamburger h ON m.ID_H = h.ID
+               WHERE p.ID = m.ID_P
+                 AND lower(h.Genre) = 'boeuf'
+                 AND h.Calories < 1000);
+
+-- Exercise 9
+SELECT p.Nom
+FROM Personne p
+    JOIN Mange m ON p.ID = m.ID_P
+    JOIN Hamburger h ON m.ID_H = h.ID
+WHERE lower(p.Sexe) = 'f'
+    AND lower(h.Genre) = 'poulet'
+GROUP BY p.ID, p.Nom
+    HAVING COUNT(distinct m.ID_H) = (SELECT count(*)
+                                     FROM Hamburger h
+                                     WHERE lower(h.Genre) = 'poulet');
