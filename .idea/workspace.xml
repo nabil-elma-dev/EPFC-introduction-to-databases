@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/12 - Recap 8 to 11/12_recap_8to11.sql" beforeDir="false" afterPath="$PROJECT_DIR$/12 - Recap 8 to 11/12_recap_8to11.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -130,3 +130,23 @@ WHERE lower(p.Sexe) = 'm'
                 FROM Mange m
                     JOIN Hamburger h ON m.ID_H = h.ID
                 WHERE lower(h.Genre) = 'poulet');
+
+-- Exercise 13
+SELECT h.ID
+FROM Hamburger h
+WHERE h.ID IN (SELECT m.ID_H
+               FROM Mange m
+                JOIN Personne p ON m.ID_P = p.ID
+               WHERE lower(p.Sexe) = 'm')
+AND h.ID IN  (SELECT m.ID_H
+              FROM Mange m
+                       JOIN Personne p ON m.ID_P = p.ID
+              WHERE lower(p.Sexe) = 'f');
+
+-- Exercise 14
+SELECT m.ID_P
+FROM Mange m
+GROUP BY m.ID_P
+    HAVING count(*) <= ALL (SELECT COUNT(*)
+                            FROM Mange m
+                            GROUP BY m.ID_P);

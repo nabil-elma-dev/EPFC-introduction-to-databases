@@ -137,6 +137,7 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
+            <name qname="Hamburgers" />
             <name qname="@" />
             <name qname="fournisseurs" />
             <name qname="facebook" />
