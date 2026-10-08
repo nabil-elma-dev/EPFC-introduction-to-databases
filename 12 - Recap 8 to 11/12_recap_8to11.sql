@@ -101,3 +101,32 @@ GROUP BY p.ID, p.Nom
     HAVING COUNT(distinct m.ID_H) = (SELECT count(*)
                                      FROM Hamburger h
                                      WHERE lower(h.Genre) = 'poulet');
+
+-- Exercise 10
+SELECT h.Nom
+FROM Hamburger h
+    JOIN Mange m ON h.ID = m.ID_H
+    JOIN Personne p ON m.ID_P = p.ID
+WHERE lower(h.Genre) = 'boeuf'
+    AND p.Poids > 80
+GROUP BY h.ID, h.Nom
+    HAVING count(distinct m.ID_P) = (SELECT count(*)
+                                     FROM Personne p
+                                     WHERE p.Poids > 80);
+
+-- Exercise 11
+SELECT h.*
+FROM Hamburger h
+WHERE h.Calories < ANY (SELECT h.Calories
+                        FROM Hamburger h);
+
+-- Exercise 12
+SELECT p.ID
+FROM Personne p
+WHERE lower(p.Sexe) = 'm'
+    AND p.Poids >= ALL (SELECT p.Poids
+                        FROM Personne p)
+    AND p.ID IN (SELECT m.ID_P
+                FROM Mange m
+                    JOIN Hamburger h ON m.ID_H = h.ID
+                WHERE lower(h.Genre) = 'poulet');
