@@ -1,5 +1,4 @@
 -- Exercise 1
-
 SELECT DISTINCT mv.Titre,
                 tech.Nom
 FROM film mv
@@ -24,20 +23,27 @@ WHERE c1.IdFilm < c2.IdFilm
 -- Exercise 3
 SELECT mv.*
 FROM film mv
-WHERE mv.IdFilm IN (
-    SELECT c.IdFilm
-    FROM contrat c
-)
-  AND mv.IdFilm NOT IN (
-    SELECT c.IdFilm
-    FROM contrat c
-        JOIN technicien t ON c.IdTechnicien = t.IdTechnicien
-    WHERE lower(t.Nat) != 'be');
+WHERE mv.IdFilm IN (SELECT c.IdFilm
+                    FROM contrat c)
+  AND mv.IdFilm NOT IN (SELECT c.IdFilm
+                        FROM contrat c
+                            JOIN technicien t ON c.IdTechnicien = t.IdTechnicien
+                        WHERE lower(t.Nat) != 'be');
 
 -- Exercise 4
 SELECT tech.Nom, max(c.NbJours), min(c.NbJours)
 FROM technicien tech
     JOIN contrat c ON tech.IdTechnicien = c.IdTechnicien
-GROUP BY tech.Nom, c.IdTechnicien
+GROUP BY tech.Nom, c.IdTechnicien;
 
 -- Exercise 5
+SELECT mv.idfilm,
+       mv.titre,
+       mv.budget, sum(task.PrixHeure * 8 * c.NbJours) as movie_total
+FROM film mv
+    JOIN contrat c ON mv.IdFilm = c.IdFilm
+    JOIN metier task ON c.IdMetier = task.IdMetier
+GROUP BY mv.IdFilm,
+         mv.Titre,
+         mv.Budget
+    HAVING sum(task.PrixHeure * 8 * c.NbJours) > mv.Budget;
