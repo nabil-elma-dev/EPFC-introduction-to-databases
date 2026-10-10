@@ -1,9 +1,22 @@
-1) Écrivez la requête permettant d’obtenir les dates des matchs de poule du Maroc (*Morocco*) et de la France (*France*).
+1) Écrivez la requête permettant d’obtenir les dates
+   des matchs de poule du Maroc (*Morocco*) et de la France (*France*).
 
-2) Écrivez la requête permettant d’obtenir les matchs de poule qui se sont terminés par une égalité. Pour rappel, les deux équipes reçoivent 1 point dans ce cas-là. Affichez le nom des deux équipes, ainsi que la poule du match. Indice : le résultat contient 10 lignes.
+2) Écrivez la requête permettant d’obtenir les matchs de poule qui se
+   sont terminés par une égalité.
+   Pour rappel, les deux équipes reçoivent 1 point dans ce cas-là.
+   Affichez le nom des deux équipes, ainsi que la poule du match.
+   Indice : le résultat contient 10 lignes.
 
-3) Écrivez la requête permettant d’obtenir les poules lors desquelles il y a eu exactement quatre victoires. On affichera le nom de la poule. Indice : le résultat contient 2 lignes.
+3) Écrivez la requête permettant d’obtenir les poules
+   lors desquelles il y a eu exactement quatre victoires.
+   On affichera le nom de la poule.
+   Indice : le résultat contient 2 lignes.
 
-4) Écrivez la requête permettant d’afficher le nom des joueurs présents dans la base de données qui n’ont marqué <u>aucun</u> but en phase de poule. Indice : le résultat contient 40 lignes.
+4) Écrivez la requête permettant d’afficher
+   le nom des joueurs présents dans la base de données
+   qui n’ont marqué <u>aucun</u> but en phase de poule.
+   Indice : le résultat contient 40 lignes.
 
-5) Écrivez la requête qui détermine quels sont les joueurs qui ont marqué le plus de buts lors des tirs aux buts de ce tournoi. On affichera l’identifiant de ces joueurs.
+5) Écrivez la requête qui détermine quels sont les joueurs
+   qui ont marqué le plus de buts lors des tirs aux buts de ce tournoi.
+   On affichera l’identifiant de ces joueurs.
