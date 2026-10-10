@@ -1,0 +1,36 @@
+Q1-FR: la requete affiche tout record de "ColA2" commenceant par "a" ET ne terminant pas par "s" ou "x"
+Q1-EN: query returns all records from "ColA2" beginning with "a" AND not ending with "s" or "x"
+
+Q2-FR: Non. Une function d'aggrégation n'est utilisable que sur SELECT, GROUP BY et HAVING (ici, elle est utilisée sur  WHERE)
+Q2-EN: No. Aggregate functions cannot be used on WHERE.
+
+Q3:
+,-----------,
+|   Lien    |
+,-----,-----,
+| idA | idB |
+'-----'-----'
+|  1  |  1  |
+'-----------'
+|  1  |  2  |
+'-----------'
+|  2  |  1  |
+'-----------'
+|  2  |  2  |
+'-----------'
+
+    - Qery R1 :
+    ,----------,----------,
+    | A.ColA1  | COUNT(*) |
+    '----------'----------'
+    |    10    |     4    |
+    '----------'----------'
+
+    - Query R2 :
+    ,----------,----------,
+    | A.ColA1  | COUNT(*) |
+    '----------'----------'
+    |    10    |     2    |
+    '----------'----------'
+    |    10    |     2    |
+    '----------'----------'
