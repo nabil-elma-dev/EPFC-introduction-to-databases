@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/13 - Mock exam/mock_exam_practice/13_mock_exam_practice.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/13 - Mock exam/mock_exam_practice/practice_solutions" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/13 - Mock exam/mock_exam_theory/theory_my_answers" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SQL_Scripts/practice_exam_mysql.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/b30aa7e4-4e97-4d5a-9f80-744bc611c915.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b30aa7e4-4e97-4d5a-9f80-744bc611c915.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/13 - Mock exam/mock_exam_practice/13_mock_exam_practice.sql" beforeDir="false" afterPath="$PROJECT_DIR$/13 - Mock exam/mock_exam_practice/13_mock_exam_practice.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

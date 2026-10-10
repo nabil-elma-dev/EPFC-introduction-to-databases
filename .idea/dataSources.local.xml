@@ -17,7 +17,6 @@
             <name qname="@" />
             <name qname="fournisseurs" />
             <name qname="facebook" />
-            <name qname="mock_exam" />
             <name qname="BD01_2122_1S_A" />
           </node>
         </introspection-scope>
