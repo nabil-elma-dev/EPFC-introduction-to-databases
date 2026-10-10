@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/14 - Mock exam 2/exercises_instructions" beforeDir="false" afterPath="$PROJECT_DIR$/14 - Mock exam 2/exercises_instructions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/14 - Mock exam 2/mock_exam_2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/14 - Mock exam 2/mock_exam_2.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
