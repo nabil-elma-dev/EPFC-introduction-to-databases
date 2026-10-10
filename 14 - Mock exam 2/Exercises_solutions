@@ -1,0 +1,135 @@
+/*
+1) Écrivez la requête permettant d’obtenir les dates des matchs de poule du Maroc (*Morocco*) et de la France (*France*).
+*/
+
+SELECT m.date
+FROM matches m
+         JOIN participations p ON m.match_id = p.match_id
+         JOIN teams t ON t.team_id = p.team_id
+WHERE m.type = 'P'
+  AND (t.team_name = 'France' OR t.team_name = 'Morocco');
+
+/*
+2022-11-22
+2022-11-26
+2022-11-30
+2022-11-23
+2022-11-27
+2022-12-01
+*/
+
+/*
+2) Écrivez la requête permettant d’obtenir les matchs de poule qui se sont terminés par une égalité. Pour rappel, les deux équipes reçoivent 1 point dans ce cas-là. Affichez le nom des deux équipes, ainsi que la poule du match. Indice : le résultat contient 10 lignes.
+*/
+
+SELECT t1.team_name, t2.team_name, t1.pool
+FROM participations p1
+         JOIN participations p2 ON p1.match_id = p2.match_id
+         JOIN teams t1 ON t1.team_id = p1.team_id
+         JOIN teams t2 ON t2.team_id = p2.team_id
+WHERE p1.team_id < p2.team_id
+  AND p2.points = 1;
+
+/*
+Ecuador	        Netherlands	        A
+England	        United States	    B
+United States	Wales	            B
+Mexico	        Poland	            C
+Denmark	        Tunisia	            D
+Germany	        Spain	            E
+Morocco	        Croatia	            F
+Croatia	        Belgium	            F
+Cameroon	    Serbia	            G
+Uruguay	        South Korea	        H
+*/
+
+/*
+3) Écrivez la requête permettant d’obtenir les poules lors desquelles il y a eu exactement quatre victoires. On affichera le nom de la poule. Indice : le résultat contient 2 lignes.
+*/
+
+SELECT t.pool
+FROM participations p
+         JOIN teams t ON t.team_id = p.team_id
+         JOIN matches m ON m.match_id = p.match_id
+WHERE m.type = 'p'
+  AND p.points = 3
+GROUP BY t.pool
+HAVING COUNT(*) = 4;
+
+/*
+B
+F
+*/
+
+/* Quelques variantes correctes */
+SELECT teams.pool
+FROM teams, participations
+WHERE teams.team_id = participations.team_id AND participations.points = 3
+GROUP BY teams.pool
+HAVING COUNT(*) = 4;
+	
+SELECT teams.pool
+FROM teams, participations
+WHERE participations.points > 1 AND participations.team_id=teams.team_id
+GROUP BY teams.pool
+HAVING SUM(participations.points) = 12;
+
+SELECT DISTINCT teams.pool
+FROM teams
+JOIN participations ON participations.team_id = teams.team_id
+GROUP BY participations.points, teams.pool
+HAVING COUNT(participations.points = 3) = 4;
+
+/* Cette dernière variante n'est pas tout a fait correcte car si les 6 matchs d'une poule se sont terminés par un match null, alors la somme des points est 12 aussi. */
+
+SELECT t.pool
+FROM teams t, participations p, matches m
+WHERE t.team_id = p.team_id AND	p.match_id = m.match_id AND m.type = 'p'
+GROUP BY t.pool, p.points
+HAVING SUM(p.points) = '12';
+
+
+/*
+4) Écrivez la requête permettant d’afficher le nom des joueurs présents dans la base de données qui n’ont marqué <u>aucun</u> but en phase de poule. Indice : le résultat contient 40 lignes.
+*/
+
+SELECT p.player_name
+FROM players p
+WHERE p.player_id NOT IN (SELECT g.player_id
+                          FROM goals g,
+                               matches m
+                          WHERE g.match_id = m.match_id
+                            AND m.type = 'P');
+
+/*
+Gonzalo Montiel	    Ivan Perišic	    Théo Hernandez	    Gonçalo Ramos
+Lautaro Martínez	Luka Modric	        Daizen Maeda	    Pepe
+Leandro Paredes	    Marcelo Brozovic	Abdelhamid Sabiri	Raphaël Guerreiro
+Nahuel Molina	    Mario Pašalic	    Achraf Hakimi	    Paik Seung-ho
+Enzo Fernández	    Mislav Oršic	    Daley Blind	        Manuel Akanji
+Lucas Paquetá	    Nikola Vlašic	    Denzel Dumfries	    Haji Wright
+Neymar	            Harry Kane	        Luuk de Jong	    Josko Gvardio
+Pedro	            Jordan Henderson	Memphis Depay	    Achraf Dari
+Vinícius Júnior	    Aurélien Tchouaméni	Teun Koopmeiners	Angel Di Maria
+Bruno Petkovic	    Randal Kolo Muani	Wout Weghorst	    Paulo Dybala
+*/
+
+/*
+5) Écrivez la requête qui détermine quels sont les joueurs qui ont marqué le plus de buts lors des tirs aux buts de ce tournoi. On affichera l’identifiant de ces joueurs.
+*/
+
+SELECT g.player_id
+FROM goals g
+WHERE g.type = 'p'
+GROUP BY g.player_id
+HAVING SUM(g.num_goals) >= ALL (SELECT SUM(g.num_goals)
+                                FROM goals g
+                                WHERE g.type = 'p'
+                                GROUP BY g.player_id);
+
+/*
+3
+6
+7
+37
+*/

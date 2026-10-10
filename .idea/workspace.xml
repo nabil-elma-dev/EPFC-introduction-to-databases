@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad3ca04-a876-4f56-bf1c-24fee2652ef6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/14 - Mock exam 2/DB scheme Explained.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/14 - Mock exam 2/Exercises_solutions" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/14 - Mock exam 2/exercises_instructions" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SQL_Scripts/world_cup_2022.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b30aa7e4-4e97-4d5a-9f80-744bc611c915.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b30aa7e4-4e97-4d5a-9f80-744bc611c915.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/13 - Mock exam/mock_exam_practice/13_mock_exam_practice.sql" beforeDir="false" afterPath="$PROJECT_DIR$/13 - Mock exam/mock_exam_practice/13_mock_exam_practice.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,8 +89,8 @@
       <recent name="C:\Users\nabil\IdeaProjects\EPFC-introduction-to-databases\08 - Recap 6-7\08 - Exercises Instructions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/12 - Recap 8 to 11/12 - Exercises Instructions" />
       <recent name="$PROJECT_DIR$/SQL_Scripts" />
+      <recent name="$PROJECT_DIR$/12 - Recap 8 to 11/12 - Exercises Instructions" />
       <recent name="$PROJECT_DIR$/10 - Nested queries 2" />
       <recent name="C:\BD01\03 - Auto-join\03 - Lecture slides" />
       <recent name="C:\BD01\03 - Auto-join" />

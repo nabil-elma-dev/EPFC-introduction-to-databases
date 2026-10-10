@@ -18,6 +18,7 @@
             <name qname="fournisseurs" />
             <name qname="facebook" />
             <name qname="BD01_2122_1S_A" />
+            <name qname="world_cup_2022" />
           </node>
         </introspection-scope>
       </schema-mapping>
