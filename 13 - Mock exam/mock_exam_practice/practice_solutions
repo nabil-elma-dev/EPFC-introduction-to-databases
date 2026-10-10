@@ -1,0 +1,104 @@
+/*
+Série A
+*/
+
+/* ===========================================================================
+Q1) Écrivez la requête permettant d’obtenir le titre des films et le nom
+des techniciens belges ayant participé à ces films, à condition que
+le technicien ait exercé sur le film au moins un métier dont le prix
+de l'heure est inférieur à 40 ou que l'année de production du film
+soit postérieure à 2017.
+=========================================================================== */
+
+SELECT DISTINCT f.Titre, t.Nom
+FROM contrat c
+    JOIN film f ON f.idFilm = c.idFilm
+    JOIN metier m ON m.idMetier = c.IdMetier
+    JOIN technicien t ON t.idTechnicien = c.IdTechnicien
+WHERE (m.PrixHeure < 40 OR f.AnneeProd > 2017) AND t.Nat = 'Be';
+
+/*
+Petit Budget	Marina
+Moyen Budget	Ingrid
+Moyen Budget	Marina
+Gros Budget		Marina
+Court Métrage	Marina
+Court Métrage	Ingrid
+*/
+
+/* ===========================================================================
+Q2) Écrivez la requête permettant d’obtenir les paires différentes
+d’identifiants de films telles que, pour chaque paire (d’identifiants) de films,
+au moins un même technicien exerce le même métier.
+Rappel : la paire (X, Y) est égale à la paire (Y, X)
+(X et Y représentant ici n’importe quelle donnée).
+=========================================================================== */
+
+SELECT DISTINCT c1.idfilm, c2.idFilm
+FROM contrat c1
+	JOIN contrat c2 ON c1.idMetier = c2.idMetier AND c1.idTechnicien = c2.idTechnicien
+WHERE c1.idFilm < c2.idFilm;
+
+/*
+1	4
+1	2
+2	4
+2	3
+*/
+
+/* ===========================================================================
+Q3) Écrivez la requête permettant d'obtenir les films sur lesquels ne travail-
+lent que des techniciens belges. On affichera tous les attributs de ces films.
+=========================================================================== */
+
+SELECT *
+FROM Film f
+WHERE f.idFilm NOT IN (
+    SELECT c.idFilm
+	FROM contrat c
+	JOIN technicien t ON t.idTechnicien = c.IdTechnicien
+	WHERE t.Nat != 'Be'
+);
+
+/*
+4	Court Métrage	2017	1500
+*/
+
+/* ===========================================================================
+Q4) Écrivez la requête permettant d'obtenir pour chaque technicien, son nom,
+ainsi que le plus grand et le plus petit nombre de jours de travail qu'il a
+effectués sur un film.
+=========================================================================== */
+
+SELECT t.Nom, MAX(c.NbJours), MIN(c.NbJours)
+FROM technicien t
+	JOIN contrat c ON t.idTechnicien = c.IdTechnicien
+GROUP BY t.idTechnicien, t.Nom;
+
+/*
+Alain	3	3
+Marina	7	1
+Amid	10	2
+Ingrid	3	3
+Steven	2	2
+*/
+
+/* ===========================================================================
+Q5) Écrivez la requête permettant d’obtenir les films ‘hors budget',
+c’est-à-dire tels que le coût total de l’ensemble des contrats liés au film
+soit supérieur au budget du film (on suppose qu’une journée de travail comporte
+8h de travail rémunéré). On affichera l’identifiant du film, son titre,
+son budget, ainsi que le coût total de l’ensemble des métiers liés au film.
+=========================================================================== */
+
+SELECT c.idFilm, f.Titre, f.Budget, SUM(m.PrixHeure * 8 * c.NbJours) as cout_total
+FROM contrat c
+	JOIN film f ON f.idFilm = c.idFilm
+	JOIN metier m ON m.idMetier = c.IdMetier
+GROUP BY c.idFilm, f.Titre, f.Budget
+HAVING SUM(m.PrixHeure * 8 * c.NbJours) > f.Budget;
+
+/*
+1	Petit Budget	1000	2800
+4	Court Métrage	1500	2080
+*/
